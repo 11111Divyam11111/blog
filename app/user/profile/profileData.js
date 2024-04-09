@@ -8,9 +8,9 @@ export default function profileData() {
   const router = useRouter();
 
 
-  const user = sessionStorage.getItem("user");
-  const pass = sessionStorage.getItem("pass");
-  const mail = sessionStorage.getItem("mail");
+  const user = localStorage.getItem("user");
+  const pass = localStorage.getItem("pass");
+  const mail = localStorage.getItem("mail");
 
   const item = {user , pass , mail};
 

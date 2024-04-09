@@ -37,9 +37,9 @@ export default function CreateUser() {
 
       const data = await res.json();
       localStorage.setItem("user", JSON.stringify(data));
-      sessionStorage.setItem("username", username);
-      sessionStorage.setItem("email",email);
-      sessionStorage.setItem("password",password);
+      localStorage.setItem("username", username);
+      localStorage.setItem("email",email);
+      localStorage.setItem("password",password);
 
       router.refresh();
       router.push("/user/profile");
