@@ -7,7 +7,6 @@ async function getTickets() {
     const res = await fetch("http://localhost:3000/api/blog", {
       next: {
         revalidate: 0,
-        cache: 'force-cache'
       }
     });
     if (!res.ok) {
