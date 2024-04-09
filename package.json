@@ -6,7 +6,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "dev": "next dev & npx next-video sync -w"
+    "dev": "next dev"
   },
   "dependencies": {
     "autoprefixer": "10.4.19",
