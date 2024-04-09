@@ -1,0 +1,1 @@
+export const connectionStr = "mongodb+srv://divyam:1234@fullstack.q03gpeq.mongodb.net/test?retryWrites=true&w=majority&appName=FullStack"
