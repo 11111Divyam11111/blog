@@ -2,7 +2,6 @@
 
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import SaveUser from "./SaveUser";
 
 export default function CreateUser() {
   const router = useRouter();
@@ -95,7 +94,7 @@ export default function CreateUser() {
           </button>
         </div>
       </form>
-      <SaveUser username={username} email={email} password={password}/>
+     
     </>
   );
 }
