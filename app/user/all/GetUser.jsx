@@ -1,7 +1,7 @@
 "use client"
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
-
+import {Link} from "next/link"
 export default function GetUser() {
     const [users, setUsers] = useState([]); // Corrected state variable name
 
@@ -28,16 +28,27 @@ export default function GetUser() {
         handleSubmit();
     }, [users]);
 
+    const handleRoute=(id)=>{
+        router.push(`/user/all/${id}`);
+    }
 
     return (
-        <div className='flex flex-col justify-center mt-6 gap-5'>
+        <div className='flex flex-col justify-center mt-6 gap-5 p-20 '>
             {users.map(user => (
-                <div key={user._id} className='flex flex-col rounded-md border border-white text-white gap-3 md:w-1/4 flex-grow text-left p-3 w-full'>
+                <div key={user._id} onClick={handleRoute(user._id)} className='flex flex-col  text-white gap-3 text-left p-3 w-auto rounded-md border border-white'>
                     <p>name : {user.username}</p>
                     <p>email : {user.email}</p>
-                    <p>password : {user.password}</p>
+                    <p className='text-clip text-balance'>password : {user.password}</p>
                 </div>
             ))}
+            {
+                users.length === 0 ? 
+                <div>
+                    <h3>No users left!😶</h3>
+                </div>
+                :
+                <></>
+            }
         </div>
     );
 }

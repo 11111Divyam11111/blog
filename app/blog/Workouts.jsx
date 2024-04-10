@@ -24,13 +24,13 @@ export default async function TicketList() {
     const blogs = await getTickets();
 
     return (
-      <>
+      <div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 h-auto m-3">
           {blogs.map((post) => (
             <div key={post._id} className="bg-white rounded-lg shadow-md p-6">
               <Link href={`/blog/${post._id}`}>
                 <div>
-                  <p className="text-xl font-bold mb-2">Creator: {post.title}</p>
+                  <p className="text-xl font-bold mb-2">{post.title}</p>
                   <p className="text-gray-700">{post.blog.slice(0, 250)}..</p>
                   <div className="flex items-center justify-between mt-4">
                     <div className="flex items-center space-x-4">
@@ -45,11 +45,13 @@ export default async function TicketList() {
               </Link>
             </div>
           ))}
-          {blogs.length === 0 && (
-            <p className="text-center text-gray-500">There are no blogs, sorry!</p>
-          )}
         </div>
-      </>
+        {blogs.length === 0 && (
+            <div className="text-center text-gray-500 flex justify-center">
+            <p>There are no blogs, sorry!</p>
+            </div>
+          )}
+      </div>
     );
   } catch (error) {
     console.error("Error rendering ticket list:", error);

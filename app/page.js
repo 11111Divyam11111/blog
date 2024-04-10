@@ -7,18 +7,18 @@ export default function Home() {
     <div className="flex flex-col mt-5 p-3">
       <div className="flex justify-center my-3 flex-row gap-10">
         <Link href="/blog">
-          <button className="bg-blue-400 p-2 text-white rounded-md">
+          <button className="btn btn-md btn-warning">
             View Blogs
           </button>
         </Link>
         <Link href="/blog/create">
-          <button className="bg-blue-400 p-2 text-white rounded-md">
+          <button className="btn btn-md btn-warning">
             Create Blog
           </button>
         </Link>
         <Link href="/user">
-          <button className="bg-blue-400 p-2 text-white rounded-md">
-            Create user
+          <button className="btn btn-md btn-warning">
+            Sign up
           </button>
         </Link>
       </div>
@@ -98,7 +98,10 @@ export default function Home() {
           </div>
         </div>
       </div>
+        
       <Footer/>
+
+
     </div>
   </>
 

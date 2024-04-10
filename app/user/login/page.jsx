@@ -11,35 +11,10 @@ export default function Login() {
   const [email, setEmail] = useState("");
   const [museebat, setMuseebat] = useState(false);
   const [isLoading , setisLoading] = useState(false);
-  const handleSubmit = async () => {    
-    try {
-      setisLoading(true);
-      if(!password || !email){
-        setMuseebat(true);
-        return false;
-      }
-      else{
-        setMuseebat(false);
-      }
-      let request = await fetch("http://localhost:3000/api/user",{
-        method:'POST',
-        body:JSON.stringify({email,password,login:true})
-      });
-      if (!request.ok) {
-        throw new Error(`HTTP error! status: ${request.status}`);
-      }
-      const data = await request.json();
-      if(data.ok()){
-        router.refresh();
-        setisLoading(false);
-        console.log(data);
-      }
-    } catch (error) {
-      console.error("Error saving user:", error);
-      return NextResponse.json({ error: "Failed to save user" }, { status: 500 });
-    }
-  };
   
+  const handleSubmit = () => {
+    
+  }
   
 
   return (

@@ -1,34 +1,23 @@
 "use client"
-// import { decrypt } from "dotenv";
-// import { cookies } from "next/headers";
-import { useRouter } from "next/navigation";
-import React, { useState } from "react";
+import  React from "react";
 
 export default function profileData() {
-  const router = useRouter();
+  const insaan = localStorage.getItem('user');
+  const person = JSON.parse(insaan);
+  const username = person.username;
+  const mail = person.email;
+  const password = person.password;
 
-
-  const user = localStorage.getItem("user");
-  const pass = localStorage.getItem("pass");
-  const mail = localStorage.getItem("mail");
-
-  const item = {user , pass , mail};
-
+  const item = {username,mail,password};
 
   return (
     <>
       {
-        item ? <><h3>Hello user : {user}</h3>
+        item ? <>
+        <h3>Hello 👋👋 <span className="text-yellow-600 font-bold ">{username }</span> </h3>
       <h3>your email is : {mail}</h3>
-      <h3>your password is : {pass}</h3></> : "Please Signup"
+      <h3>your password is : {password}</h3></> : "Please Signup"
       }
-      
     </>
   );
 }
-
-// export default function profileData()
-// {
-//   const data = cookies.get('session')?.value
-//   return data ? JSON.parse(decrypt(data)) : null;
-// }

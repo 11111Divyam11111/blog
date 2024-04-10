@@ -1,8 +1,15 @@
-import { blogSchema } from "@/app/lib/blogModel";
+import { userSchema } from "@/app/lib/userModel";
 import { connectionStr } from "@/app/lib/db";
 import mongoose from "mongoose";
 import { NextResponse } from "next/server";
 
+
+export async function DELETE(req,cont){
+    const id = cont.params.id;
+    await mongoose.connect(connectionStr, { useNewUrlParser: true });
+    const result = await userSchema.deleteOne({_id:id})
+    return NextResponse.json(result);
+}
 
 export async function GET(request,c) {
     await mongoose.connect(connectionStr);
@@ -11,7 +18,7 @@ export async function GET(request,c) {
         if (!id) {
             return NextResponse.json({ error: 'Id is not present' }, { status: 404 });
         }
-        const data = await blogSchema.find({ _id: id });
+        const data = await userSchema.find({ _id: id });
         if (!data || data.length === 0) {
             return NextResponse.json({ error: "No data present" })
         }
@@ -19,11 +26,4 @@ export async function GET(request,c) {
     } catch (error) {
         return NextResponse.json({ error: 'Error fetching blog data', message: error.message }, { status: 500 });
     }
-}
-
-export async function DELETE(req, cont) {
-    const id = cont.params.id;
-    await mongoose.connect(connectionStr, { useNewUrlParser: true });
-    const result = await blogSchema.deleteOne({ _id: id });
-    return NextResponse.json(result);
 }

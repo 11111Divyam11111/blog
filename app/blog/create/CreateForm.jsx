@@ -43,7 +43,7 @@ export default function CreateForm() {
         <label>
           <input
             type="text"
-            placeholder="Creator Name"
+            placeholder="Title"
             required
             onChange={(e) => setTitle(e.target.value)}
             value={title}

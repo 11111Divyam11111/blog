@@ -1,11 +1,12 @@
 "use client";
 import { BiDislike, BiSolidLike, BiLike, BiSolidDislike } from "react-icons/bi";
-import { MdDelete } from "react-icons/md";
 import { useState } from "react";
+
 
 
 export const Like = () => {
     const [like, setLike] = useState(false);
+
     
     const handleLike = () => {
         setLike(!like);
@@ -21,16 +22,13 @@ export const Like = () => {
                         < BiSolidLike Bwidth={50} style={{ color: 'blue' }} onClick={handleLike} />
                     </button>
             }
-
-            {/* <p className="text-center text-blue-600">{like}</p> */}
-
         </div>
-
     );
 };
 
 export const DisLike = () => {
     const [disLike, setDisLike] = useState(false);
+
     const handleDisLike = () => {
         setDisLike(!disLike);
     }
@@ -49,21 +47,5 @@ export const DisLike = () => {
             {/*<p className="text-center text-red-500">{exercise.dislike}</p>*/}
 
         </div>
-
     );
 };
-
-export const Delete = ({id}) => {
-    async function  handleDelete(id){
-        const res = await fetch(`http://localhost/blog/${id}`, {
-            method:"DELETE"
-        });
-        return res.json;
-    }
-    return (
-        <div>
-            <button onClick={handleDelete}><MdDelete /></button>
-        </div>
-
-    )
-}
