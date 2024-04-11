@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { DisLike, Like } from "./blog/workFunction";
 import Footer from "./_components/Footer";
+// import video from "@/bideos/home2.mp4"
+// import NextVideo from "next-video"
 
 export default function Home() {
   return (<>
@@ -22,6 +24,9 @@ export default function Home() {
           </button>
         </Link>
       </div>
+      {/* <div>
+        <NextVideo src={video}/>
+      </div> */}
       <div className="flex flex-col mt-10">
         <div className="text-center mb-10">
           <h1 className="text-2xl font-bold">Some Recent Blogs</h1>

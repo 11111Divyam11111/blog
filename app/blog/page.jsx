@@ -15,9 +15,6 @@ export default function page() {
           </div>
         </Suspense>
       </div>
-      <div>
-        <Footer />
-      </div>
     </div>
   );
 }

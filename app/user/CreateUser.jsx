@@ -52,7 +52,8 @@ export default function CreateUser() {
         onSubmit={(e) => handleSubmit(e)}
         className="md:w-1/2 justify-center flex flex-col gap-10 m-7"
       >
-        <label className="flex justify-start gap-6">
+        <label className="flex justify-start gap-6 indicator">
+        <span className="indicator-item badge">*</span>
           <input
             onChange={(e) => setUserName(e.target.value)}
             value={username}
@@ -62,7 +63,9 @@ export default function CreateUser() {
             className="input input-bordered input-primary w-full max-w-xs"
           />
         </label>
-        <label className="flex justify-start gap-12">
+        <label className="flex justify-start gap-12 indicator">
+        <span className="indicator-item badge">*</span>
+
           <input
             required
             onChange={(e) => setEmail(e.target.value)}
@@ -74,7 +77,8 @@ export default function CreateUser() {
             check ? <span>Password should be more than 8 letters</span> : ""
           }
         </label>
-        <label className="flex justify-start gap-12">
+        <label className="flex justify-start gap-12 indicator">
+        <span className="indicator-item badge">*</span>
           <input
             type="password"
             required

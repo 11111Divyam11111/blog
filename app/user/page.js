@@ -13,9 +13,7 @@ export default function page() {
       <Link href="/user/login">
             Do have an account ? Click to <button className="text-blue-400">Login</button>
       </Link>
-      </div>
-    <Footer/>
-      
+      </div>  
       
     </div >
   )

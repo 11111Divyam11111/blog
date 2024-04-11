@@ -26,19 +26,19 @@ export default function Navbar() {
     }
   },[details])
   return (
-    <div className="flex bg-black h-20 justify-center w-full text-amber-400">
+    <div className="flex bg-black h-20 justify-center w-full">
       <div className="flex p-8 justify-center gap-5 md:gap-32 w-full " >
-        <Link href='/'>Home</Link>
-        <Link href='/blog'>Blogs</Link>
-        <Link href='/user/all'>Users</Link>
+        <Link href='/' className={` ${pathName === '/' ? 'active' : ''}`} >Home</Link>
+        <Link href='/blog' className={` ${pathName === '/blog' ? 'active' : ''}`} >Blogs</Link>
+        <Link href='/user/all' className={` ${pathName === '/user/all' ? 'active' : ''}`} >Users</Link>
         {
           details && details.username  && details.password && details.email? 
           <>
-          <Link href='/user/profile'>Profile</Link>
+          <Link href='/user/profile' className={` ${pathName === '/user/profile' ? 'active' : ''}`} >Profile</Link>
           <button onClick={handleLogout}>Logout</button>
           </>
            : 
-          <Link href='/user'>Signup</Link>
+          <Link href='/user' className={` ${pathName === '/user' ? 'active' : ''}`} >Signup</Link>
         }        
       </div>
     </div>    
