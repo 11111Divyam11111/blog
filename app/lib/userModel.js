@@ -14,7 +14,8 @@ const userModel = new mongoose.Schema({
     email:{
         type:String,
         required:true
-    }
+    },
+    blog:[{type:mongoose.Schema.Types.ObjectId , ref:"workouts"}]
     // Add more fields as needed
 },{timestamps:true});
 

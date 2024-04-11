@@ -2,11 +2,27 @@
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { Link } from "next/link";
+import DeleteUser from "@/app/user/all/[id]/DeleteUser";
+
 export default function GetUser() {
   const [users, setUsers] = useState([]); // Corrected state variable name
   const [index, setIndex] = useState(1);
 
   const router = useRouter();
+
+  // const handleRoute = (id) => {
+  //   router.push(`/user/all/${id}`);
+  // };
+
+  function getCookie(name) {
+    let value = `; ${document.cookie}`;
+    let parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(";").shift();
+  }
+
+  let naam = getCookie("user");
+  naam = JSON.parse(naam);
+  const u = naam.email;
 
   useEffect(() => {
     const handleSubmit = async () => {
@@ -29,10 +45,6 @@ export default function GetUser() {
     handleSubmit();
   }, [users]);
 
-  const handleRoute = (id) => {
-    router.push(`/user/all/${id}`);
-  };
-
   return (
     <>
       {users.length === 0 ? (
@@ -49,17 +61,23 @@ export default function GetUser() {
                   <th>S.No.</th>
                   <th>Name</th>
                   <th>Email</th>
-                  <th>Password</th>
+                  {u == "divyamraj110@mail.com" ? <th>Password</th> : ""}
+                  <th>Action</th>
                 </tr>
               </thead>
               {/* body */}
               <tbody>
                 {users.map((user, idx) => (
-                  <tr key={user._id} onClick={handleRoute(user._id)}>
+                  <tr key={user._id}>
                     <th>{idx + 1}</th>
                     <td>{user.username}</td>
                     <td>{user.email}</td>
-                    <td>{user.password}</td>
+                    {u == "divyamraj110@mail.com" ? (
+                      <td>{user.password}</td>
+                    ) : (
+                      ""
+                    )}
+                    <td><DeleteUser id={user._id}/></td>
                   </tr>
                 ))}
               </tbody>

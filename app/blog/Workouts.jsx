@@ -28,7 +28,7 @@ export default async function TicketList() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 h-auto m-3">
           {blogs.map((post) => (
             <div key={post._id} className="bg-white rounded-lg shadow-md p-6">
-              <Link href={`/blog/${post._id}`}>
+              <Link href={`/blog/${post._id}`} >
                 <div>
                   <p className="text-xl font-bold mb-2">{post.title}</p>
                   <p className="text-gray-700">{post.blog.slice(0, 250)}..</p>

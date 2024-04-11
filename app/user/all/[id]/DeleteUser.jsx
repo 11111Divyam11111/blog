@@ -1,3 +1,4 @@
+"use client"
 import { useRouter } from 'next/navigation';
 import React from 'react'
 import { MdDelete } from 'react-icons/md'
@@ -18,10 +19,11 @@ export default function DeleteUser({id}) {
       catch(err){
         return err;
       }     
+      router.refresh();
     }
   return (
     <div>
-    <button className="btn btn-sm btn-warning " onClick={handleDelete(i)}>
+    <button className="btn btn-sm btn-warning " onClick={()=>handleDelete(i)}>
     <MdDelete/>
         Delete 
     </button>

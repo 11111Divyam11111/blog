@@ -4,6 +4,8 @@ import Link from "next/link";
 import { NextResponse } from "next/server";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function Login() {
   const router = useRouter();
@@ -13,12 +15,30 @@ export default function Login() {
   const [isLoading , setisLoading] = useState(false);
   
   const handleSubmit = () => {
+    function getCookie (name) {
+      let value = `; ${document.cookie}`;
+      let parts = value.split(`; ${name}=`);
+      if (parts.length === 2) return parts.pop().split(';').shift();
+    }
     
+  let naam = getCookie('user');
+  naam = JSON.parse(naam);
+  const u = naam.username;
+  const m = naam.email;
+  const p = naam.password;
+
+  if(m==email && password==p){
+    alert("Login successful ✨");
+    router.push('/user/profile')
+  }
+  else{
+    alert("Invalid details")
+  }
   }
   
-
   return (
     <>
+    <ToastContainer/>
       <form
         onSubmit={(e) => handleSubmit(e)}
         className="md:w-1/2 flex flex-col gap-10 m-7 justify-center text-center"
@@ -54,7 +74,7 @@ export default function Login() {
           <button
             className="bg-blue-400 p-2 text-white rounded-md"
             disabled={isLoading}
-            onClick={handleSubmit}
+            onClick={()=>handleSubmit}
           >
             {isLoading ? <span>Loggin...</span> : <span>Login</span>}
           </button>

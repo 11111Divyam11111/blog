@@ -1,6 +1,16 @@
-const { withNextVideo } = require('next-video/process')
+const { withNextVideo } = require('next-video/process');
 
 /** @type {import('next').NextConfig} */
-const nextConfig = {}
+const nextConfig = {
+  eslint: { ignoreDuringBuilds: true },
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'daisyui.com',
+      },
+    ],
+  },
+};
 
-module.exports = {eslint: { ignoreDuringBuilds: true }}
+module.exports = nextConfig;

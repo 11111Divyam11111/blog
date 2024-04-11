@@ -6,7 +6,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 const UpdateBlog = ({ id }) => {
   const notify = () => {
-    toast.promise("Coming soon!", {
+    toast.info("Coming soon!", {
       position: "bottom-center",
       autoClose: 2000,
       hideProgressBar: false,

@@ -33,7 +33,16 @@ export default function CreateUser() {
       }
 
       const data = await res.json();
-      localStorage.setItem("user", JSON.stringify(data));
+
+      // local storage
+      // localStorage.setItem("user", JSON.stringify(data)); 
+      // storing data in local Storage
+
+      //cookies
+      document.cookie = `user=${JSON.stringify(data)}; path=/; max-age=${60 * 60 * 24 * 14};`; 
+      // storing data in cookies
+
+
       router.refresh();
       router.push("/user/profile");
       router.refresh();
