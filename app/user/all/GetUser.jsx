@@ -20,7 +20,7 @@ export default function GetUser() {
     if (parts.length === 2) return parts.pop().split(";").shift();
   }
 
-  let naam = getCookie("user");
+  let naam = getCookie("user_Long");
   naam = JSON.parse(naam);
   const u = naam.email;
 
@@ -67,7 +67,8 @@ export default function GetUser() {
               </thead>
               {/* body */}
               <tbody>
-                {users.map((user, idx) => (
+                {
+                 users.map((user, idx) => (
                   <tr key={user._id}>
                     <th>{idx + 1}</th>
                     <td>{user.username}</td>

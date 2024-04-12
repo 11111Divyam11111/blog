@@ -1,17 +1,22 @@
-"use client";
+"use client"
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import { dataContext } from "@/app/user/context/context";
 
 export default function Navbar() {
+  const data1 = useContext(dataContext);
   const [details, setDetails] = useState();
   const router = useRouter();
+  const [isLogged, setIsLogged] = useState(false);
   const pathName = usePathname();
 
+  // logout
   const handleLogout = () => {
-    setDetails();
-    localStorage.removeItem("user");
     router.push("/blog");
+    setDetails(null);
+    document.cookie = `user_Session=; path=/; max-age=0;`;
+    setIsLogged(false);
   };
 
   function getCookie(name) {
@@ -21,16 +26,16 @@ export default function Navbar() {
   }
 
   useEffect(() => {
-    let data = getCookie("user");
-    if (!data && pathName == "/user/profile") {
-      router.push("/user");
-    } else if (data && pathName == "user") {
-      router.push("/user/profile");
+    let data = getCookie("user_Session");
+    if (data) {
+      const d = JSON.parse(data);
+      setDetails(d);
+      setIsLogged(true);
     } else {
-      setDetails(JSON.parse(data));
+      setDetails(null);
+      setIsLogged(false);
     }
-  }, []);
-
+  }, [pathName]);
 
   return (
     <div className="flex bg-black h-20 justify-center w-full">
@@ -44,17 +49,15 @@ export default function Navbar() {
         >
           Blogs
         </Link>
-        {  details && details.username== "divyamraj110@gmail.com" && details.password == "12345678" ? (
+        {details && details.username === "divyamraj110@gmail.com" && details.password === "12345678" ? (
           <Link
             href="/user/all"
             className={` ${pathName === "/user/all" ? "active" : ""}`}
           >
             Users
           </Link>
-        ) : (
-          ""
-        )}
-        {details && details.username && details.password && details.email ? (
+        ) : null}
+        {isLogged ? (
           <>
             <Link
               href="/user/profile"

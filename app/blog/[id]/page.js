@@ -35,7 +35,7 @@ export default async function TicketDetails({ params }) {
   return (
     <div className="flex flex-col justify-center align-middle text-center mt-20 gap-10">
       <h3>What do you want to do?</h3>
-      <div className="flex flex-row gap-10 justify-center">
+      <div className="flex flex-col gap-10 justify-center">
         <DeleteBlogs id={id} />
         <UpdateBlog id={id} />
       </div>

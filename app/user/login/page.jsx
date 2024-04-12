@@ -3,47 +3,66 @@
 import Link from "next/link";
 import { NextResponse } from "next/server";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { useContext, useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+// import { dataContext } from "@/app/user/context/context";
 
 export default function Login() {
   const router = useRouter();
   const [password, setPassword] = useState("");
+  const [username, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [museebat, setMuseebat] = useState(false);
-  const [isLoading , setisLoading] = useState(false);
-  
-  const handleSubmit = () => {
-    function getCookie (name) {
-      let value = `; ${document.cookie}`;
-      let parts = value.split(`; ${name}=`);
-      if (parts.length === 2) return parts.pop().split(';').shift();
-    }
-    
-  let naam = getCookie('user');
-  naam = JSON.parse(naam);
-  const u = naam.username;
-  const m = naam.email;
-  const p = naam.password;
+  const [isLoading, setisLoading] = useState(false);
 
-  if(m==email && password==p){
-    alert("Login successful ✨");
-    router.push('/user/profile')
+  function getCookie(name) {
+    let value = `; ${document.cookie}`;
+    let parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(";").shift();
   }
-  else{
-    alert("Invalid details")
-  }
-  }
-  
+
+  let naam = getCookie("user_Long");
+  const naam1 = JSON.parse(naam);
+  const u = naam1.username;
+  const m = naam1.email;
+  const p = naam1.password;
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (m == email && p == password && u == username) {
+      document.cookie = `user_Session=${JSON.stringify(naam1)};path=/;max-age=${
+        60 * 60 * 24 * 14
+      }}`;
+      router.refresh();
+      router.push("/user/profile");
+      router.refresh();
+    } else {
+      alert("Invalid details");
+    }
+  };
+
   return (
     <>
-    <ToastContainer/>
+      <ToastContainer />
       <form
         onSubmit={(e) => handleSubmit(e)}
-        className="md:w-1/2 flex flex-col gap-10 m-7 justify-center text-center"
+        className="md:w-1/2 flex flex-col gap-4 md:gap-8 m-7 justify-center text-center"
       >
         <h2 className="text-center">Login user</h2>
+        <label>
+          <input
+            type="text"
+            placeholder="Username"
+            required
+            onChange={(e) => setUserName(e.target.value)}
+            value={username}
+            className="input input-bordered input-primary w-full max-w-xs"
+          />
+          {museebat && !username && (
+            <span className="text-red">Please enter username</span>
+          )}
+        </label>
         <label>
           <input
             type="mail"
@@ -53,9 +72,9 @@ export default function Login() {
             value={email}
             className="input input-bordered input-primary w-full max-w-xs"
           />
-          {
-            museebat && !email && <span className="text-red">Please enter email</span>
-          }
+          {museebat && !email && (
+            <span className="text-red">Please enter email</span>
+          )}
         </label>
         <label>
           <input
@@ -66,26 +85,23 @@ export default function Login() {
             placeholder="password"
             className="input input-bordered input-primary w-full max-w-xs"
           />
-          {
-            museebat && !password && <span className="text-red">Please enter password</span>
-          }
+          {museebat && !password && (
+            <span className="text-red">Please enter password</span>
+          )}
         </label>
         <div>
           <button
             className="bg-blue-400 p-2 text-white rounded-md"
             disabled={isLoading}
-            onClick={()=>handleSubmit}
           >
             {isLoading ? <span>Loggin...</span> : <span>Login</span>}
           </button>
         </div>
       </form>
-      <Link href="/user">
-        <button>
-          <p className="text-center">Dont have an account ? Click to </p>
-          <p className="text-blue-400 text-center">Signup</p>
-        </button>
-      </Link>
+      <div>
+        <p className="text-center">Dont have an account ? Click to 
+        <Link href="/user" className="text-blue-400 text-center"> Signup</Link></p>
+      </div>
     </>
   );
 }

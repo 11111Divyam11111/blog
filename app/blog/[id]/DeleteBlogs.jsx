@@ -1,33 +1,69 @@
 "use client";
 import { useRouter } from "next/navigation";
-import React from "react";
+import React, { useState } from "react";
 import { MdDelete } from "react-icons/md";
 
 export default function DeleteBlogs({ id }) {
+  const [valid, setValid] = useState(false);
+  function getCookie(name) {
+    let value = `; ${document.cookie}`;
+    let parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(";").shift();
+  }
+  let data = getCookie("user_Session");
+  data = JSON.parse(data);
+  const valid_id = data._id;
+
+  // yahan par valid_id user ki id hai aur id blog ki id hai.....to hame actually ye karna hai ki jo blog ki id hai wo user wale data main
+  // present blog ki id main se match kare
+  if(valid_id==id) {
+    setValid(true);
+  }
   const router = useRouter();
   const handleDelete = async () => {
-    const data = await fetch(`http://localhost:3000/api/blog/${id}`,{
-      method:"DELETE"
+    const data = await fetch(`http://localhost:3000/api/blog/${id}`, {
+      method: "DELETE",
     });
-    try{
-      if(data.ok){
+    try {
+      if (data.ok && vaild) {
+        setValid(true);
         const res = await data.json();
-        router.push('/blog');
-    router.refresh();
+        router.push("/blog");
+        router.refresh();
         return res.json();
+      } else if (valid_id != id) {
+        setValid(false);
       }
-    }
-    catch(err){
+    } catch (err) {
       return err;
     }
     router.refresh();
-  }
+  };
   return (
-    <button className="" onClick={()=>handleDelete(id)}>
-      <div className="btn btn-lg btn-warning mt-5">
-        <MdDelete />
-        <p>Delete</p>
-      </div>
-    </button>
+    <div className="flex justify-center align-top">
+      {valid==true ? (
+        <button className="" onClick={() => handleDelete(id)}>
+          <div className="btn btn-lg btn-warning mt-5">
+            <MdDelete />
+            <p>Delete</p>
+          </div>
+        </button>
+      ) : (
+        <>
+          <div className="rating flex flex-row gap-3 ">
+          <p>Rate :  </p>
+            <input type="radio" name="rating-1" className="mask mask-star" />
+            <input
+              type="radio"
+              name="rating-1"
+              className="mask mask-star"
+            />
+            <input type="radio" name="rating-1" className="mask mask-star" />
+            <input type="radio" name="rating-1" className="mask mask-star" />
+            <input type="radio" name="rating-1" className="mask mask-star" />
+          </div>
+        </>
+      )}
+    </div>
   );
 }

@@ -10,11 +10,7 @@ export default function page() {
       <p>Create user</p>
       <CreateUser />
       <div className="mt-5">
-      <Link href="/user/login">
-            Do have an account ? Click to <button className="text-blue-400">Login</button>
-      </Link>
       </div>  
-      
     </div >
   )
 }

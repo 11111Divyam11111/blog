@@ -1,1 +1,3 @@
-export const connectionStr = "mongodb+srv://divyam:1234@fullstack.q03gpeq.mongodb.net/test?retryWrites=true&w=majority&appName=FullStack"
+require('dotenv').config()
+
+export const connectionStr = process.env.MONGO_URI
