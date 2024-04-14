@@ -11,7 +11,7 @@ export async function GET(request,c) {
         if (!id) {
             return NextResponse.json({ error: 'Id is not present' }, { status: 404 });
         }
-        const data = await blogSchema.find({ _id: id });
+        const data = await blogSchema.find({ _id: id }).populate();
         if (!data || data.length === 0) {
             return NextResponse.json({ error: "No data present" })
         }

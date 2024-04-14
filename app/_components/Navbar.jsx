@@ -49,7 +49,7 @@ export default function Navbar() {
         >
           Blogs
         </Link>
-        {details && details.username === "divyamraj110@gmail.com" && details.password === "12345678" ? (
+        {details && details.email == "divyamraj110@mail.com"  ? (
           <Link
             href="/user/all"
             className={` ${pathName === "/user/all" ? "active" : ""}`}

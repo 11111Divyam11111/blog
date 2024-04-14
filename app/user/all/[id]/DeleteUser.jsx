@@ -13,6 +13,7 @@ export default function DeleteUser({id}) {
       try{
         if(data.ok){
           const res = await data.json();
+          router.refresh();
           return res.json();
         }
       }

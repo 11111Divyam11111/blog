@@ -1,4 +1,6 @@
+
 const { withNextVideo } = require('next-video/process');
+
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -11,6 +13,22 @@ const nextConfig = {
       },
     ],
   },
+  reactStrictMode: true,
+  webpack(config, options) {
+    config.module.rules.push(
+      {
+        test: /\.mp4$/,
+        use: {
+          loader: 'file-loader',
+          options: {
+            name: '[name].[ext]',
+            outputPath: 'videos/',
+            publicPath: '/videos/',
+          },
+        },
+      },
+  )
+    return config
+  },
 };
-
-module.exports = nextConfig;
+module.exports = withNextVideo(nextConfig);

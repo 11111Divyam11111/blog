@@ -12,7 +12,7 @@ export default function profileData() {
     }
   }
 
-  let naam = getCookie("user_Session");
+  let naam = getCookie("user_Long");
   let username;
   let mail;
   let password;
@@ -22,7 +22,7 @@ export default function profileData() {
     mail = naam.email;
     password = naam.password;
   } else {
-    console.error("Cookie not found or invalid JSON format");
+    // fetch data from the backend and check if the data is correctly entered by the user if yes then continue
   }
 
   return (

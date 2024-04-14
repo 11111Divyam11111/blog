@@ -6,11 +6,23 @@ export default function CreateForm() {
   const router = useRouter();
   const [title, setTitle] = useState("");
   const [blog, setBlog] = useState("");
+  const [userid,setUserId] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
+
+    function getCookie(name) {
+      let value = `; ${document.cookie}`;
+      let parts = value.split(`; ${name}=`);
+      if (parts.length === 2) return parts.pop().split(";").shift();
+    }
+
+    let cook = getCookie("user_Session");
+    cook = JSON.parse(cook);
+    const user_ki_id = cook._id;
+    setUserId(user_ki_id);
 
     try {
       const res = await fetch("http://localhost:3000/api/blog", {

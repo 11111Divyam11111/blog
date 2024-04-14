@@ -16,22 +16,23 @@ export default function DeleteBlogs({ id }) {
 
   // yahan par valid_id user ki id hai aur id blog ki id hai.....to hame actually ye karna hai ki jo blog ki id hai wo user wale data main
   // present blog ki id main se match kare
-  if(valid_id==id) {
-    setValid(true);
-  }
+  // if(valid_id==id) {
+  //   setValid(true);
+  // }
+  
   const router = useRouter();
   const handleDelete = async () => {
     const data = await fetch(`http://localhost:3000/api/blog/${id}`, {
       method: "DELETE",
     });
     try {
-      if (data.ok && vaild) {
+      if (data.ok) {
         setValid(true);
         const res = await data.json();
         router.push("/blog");
         router.refresh();
         return res.json();
-      } else if (valid_id != id) {
+      } else{
         setValid(false);
       }
     } catch (err) {
@@ -41,7 +42,7 @@ export default function DeleteBlogs({ id }) {
   };
   return (
     <div className="flex justify-center align-top">
-      {valid==true ? (
+      {!valid==true ? (
         <button className="" onClick={() => handleDelete(id)}>
           <div className="btn btn-lg btn-warning mt-5">
             <MdDelete />

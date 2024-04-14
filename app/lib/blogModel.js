@@ -1,6 +1,5 @@
-const {default : mongoose} = require('mongoose');
-
-
+const {default : mongoose } = require('mongoose');
+const Schema = mongoose.Schema;
 const blogModel = new mongoose.Schema({
     title:{
         type:String,
@@ -18,7 +17,7 @@ const blogModel = new mongoose.Schema({
         type:Number,
         default:0
     },
-    person:{type:mongoose.Schema.Types.ObjectId , ref:"users"}
+    person:{type:Schema.Types.String, ref:'users'}
 
 },{timestamps:true})
 

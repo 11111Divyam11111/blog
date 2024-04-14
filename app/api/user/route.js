@@ -10,12 +10,12 @@ export async function GET() {
     return NextResponse.json(data)
 }
 
-export async function DELETE(params) {
-    const id = params.id
-    await mongoose.connect(connectionStr);
-    const data = await userSchema.findOneAndDelete({ _id: id });
-    return NextResponse.json(data.slice(0, 1));
-}
+// export async function DELETE(params) {
+//     const id = params.id
+//     await mongoose.connect(connectionStr);
+//     const data = await userSchema.findOneAndDelete({ _id: id });
+//     return NextResponse.json(data.slice(0, 1));
+// }
 
 export async function POST(request) {
     const payload = await request.json();

@@ -22,7 +22,6 @@ export async function POST(request) {
         const result = await blog.save();
         
         console.log(result);
-        
         // Return a JSON response with the saved data
         return NextResponse.json(result);
     } catch (error) {
