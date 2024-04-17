@@ -12,7 +12,6 @@ export default function DeleteBlogs({ id }) {
   }
   let data = getCookie("user_Session");
   data = JSON.parse(data);
-  const valid_id = data._id;
 
   // yahan par valid_id user ki id hai aur id blog ki id hai.....to hame actually ye karna hai ki jo blog ki id hai wo user wale data main
   // present blog ki id main se match kare
@@ -42,7 +41,7 @@ export default function DeleteBlogs({ id }) {
   };
   return (
     <div className="flex justify-center align-top">
-      {!valid==true ? (
+      {!valid==true &&  data.email == "divyamraj110@gmail.com" ? (
         <button className="" onClick={() => handleDelete(id)}>
           <div className="btn btn-lg btn-warning mt-5">
             <MdDelete />

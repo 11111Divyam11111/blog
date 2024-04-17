@@ -13,20 +13,21 @@ export default function DeleteUser({id}) {
       try{
         if(data.ok){
           const res = await data.json();
-          router.refresh();
           return res.json();
         }
       }
       catch(err){
         return err;
-      }     
-      router.refresh();
+      }  
+      finally{
+        router.refresh();
+      }   
     }
+
   return (
     <div>
     <button className="btn btn-sm btn-warning " onClick={()=>handleDelete(i)}>
     <MdDelete/>
-        Delete 
     </button>
 </div>
   )

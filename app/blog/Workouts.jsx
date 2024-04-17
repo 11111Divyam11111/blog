@@ -1,13 +1,14 @@
-
 import { Like, DisLike } from "./workFunction";
 import Link from "next/link";
+import notFound from "@/public/notFound2.webp"
+import Image from "next/image";
 
 async function getTickets() {
   try {
     const res = await fetch("http://localhost:3000/api/blog", {
       next: {
         revalidate: 0,
-      }
+      },
     });
     if (!res.ok) {
       throw new Error("Failed to fetch tickets");
@@ -25,32 +26,36 @@ export default async function TicketList() {
 
     return (
       <div>
-        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 h-auto m-5 p-5">
+        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 h-auto md:m-5&&p-5">
           {blogs.map((post) => (
             <div key={post._id} className="bg-white rounded-lg shadow-md p-6">
-              <Link href={`/blog/${post._id}`} >
-                <div>
+              <div>
+                <Link href={`/blog/${post._id}`}>
                   <p className="text-xl font-bold mb-2">{post.title}</p>
                   <p className="text-gray-700">{post.blog.slice(0, 250)}..</p>
-                  <div className="flex items-center justify-between mt-4">
-                    <div className="flex items-center space-x-4">
-                      <Like />
-                      <DisLike />
-                    </div>
-                    <p className="text-sm text-gray-500 absolute -mb-3 ml-20">
-                      Posted: {post.createdAt.slice(0, 10)} at {post.createdAt.slice(11, 16)} IST
-                    </p>
+                </Link>
+                <div className="flex items-center justify-between mt-4">
+                  <div className="flex items-center space-x-4">
+                    <Like />
+                    <DisLike />
                   </div>
+                  <p className="text-sm text-gray-500 absolute -mb-3 ml-20">
+                    Posted: {post.createdAt.slice(0, 10)} at{" "}
+                    {post.createdAt.slice(11, 16)} IST
+                  </p>
                 </div>
-              </Link>
+              </div>
             </div>
           ))}
         </div>
         {blogs.length === 0 && (
-            <div className="text-center text-gray-500 flex justify-center">
-            <p>There are no blogs, sorry!</p>
+          <div className="flex justify-center items-center">
+            <div className="flex flex-col text-center text-gray-500">
+              <Image src={notFound} width={300} height={300} alt="not found" className="mx-auto" />
+              {/* <p className="mt-4">There are no blogs, sorry!</p> */}
             </div>
-          )}
+          </div>
+        )}
       </div>
     );
   } catch (error) {

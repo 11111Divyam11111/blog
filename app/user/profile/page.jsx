@@ -1,6 +1,9 @@
   import React from 'react'
-import Profile from './profileData'
+import dynamic from 'next/dynamic'
 
+const Profile = dynamic(() => import("./profileData"),{
+  ssr: false,
+})
 
 export default function page() {
   return (

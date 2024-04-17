@@ -1,9 +1,25 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import prof from "@/public/prof.jpg"
 
-export default function profileData() {
+const Local = () => {
+  let saveUser = "";
+  useEffect(()=>{
+    saveUser = localStorage.getItem("user2");
+    setUser2(saveUser ??  "");
+  },[]);
+  const [user2,setUser2] = useState(saveUser ?? "");
+
+}
+
+async function profileData(){
+  const [user,setUser] = useState({});
+  const data = await fetch("http://localhost:3000/api/user");
+  const res = await data.json();
+  console.log(user);
+
   function getCookie(name) {
     if (typeof document !== "undefined") {
       let value = `; ${document.cookie}`;
@@ -11,37 +27,44 @@ export default function profileData() {
       if (parts.length === 2) return parts.pop().split(";").shift();
     }
   }
-
   let naam = getCookie("user_Long");
+  let naam2 = getCookie("user_Session");
+
   let username;
   let mail;
   let password;
-  if (naam) {
+  if (naam==null && naam2==null ) {
+  setUser(res);
+    username = res.username;
+    mail = naam.email;
+    password = naam.password;
+  } else {
     naam = JSON.parse(naam);
     username = naam.username;
     mail = naam.email;
     password = naam.password;
-  } else {
-    // fetch data from the backend and check if the data is correctly entered by the user if yes then continue
   }
-
+  
   return (
     <>
       {username && mail && password ? (
         <>
           <div className="avatar">
-            <div className="w-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+            <div className="rounded-sm ring ring-amber-600">
               <Image
                 alt="profile icon"
-                width={50}
-                height={50}
-                src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
+                width={200}
+                height={200}
+                src={prof}
               />
             </div>
           </div>
           <h3>
             Hello 👋👋{" "}
             <span className="text-yellow-600 font-bold ">{username}</span>{" "}
+            {
+            mail == "divyamraj110@gmail.com"  ? <p>Status : Admin</p> : <p>Status: User</p>
+             }
           </h3>
           <h3>your email is : {mail}</h3>
           <h3>your password is : {password}</h3>
@@ -56,3 +79,6 @@ export default function profileData() {
     </>
   );
 }
+
+
+export default profileData;

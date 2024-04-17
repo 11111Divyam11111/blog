@@ -48,19 +48,14 @@ export default function GetUser() {
   return (
     <>
       {
-        u != "divyamraj110@mail.com" && ( 
+        u != "divyamraj110@gmail.com" && ( 
           <p className="mt-20 text-3xl">Sorry ! You are not the administrator 🙄</p>
         )
       }
-      {users.length === 0 ? (
-        <div>
-          <h3>No users left!😶</h3>
-        </div>
-      ) : ("")}
       {
-        users.length != 0 && u == "divyamraj110@mail.com" ?
+        users.length != 0 && u === "divyamraj110@gmail.com" ?
           <>
-            <div className="flex flex-col justify-center mt-6 gap-5 p-20 text-white ">
+            <div className="flex flex-col justify-center mt-6 gap-5 md:p-20 text-white ">
               <div className="overflow-x-auto text-white">
                 <table className="table text-white">
                   {/* head */}
@@ -69,7 +64,7 @@ export default function GetUser() {
                       <th>S.No.</th>
                       <th>Name</th>
                       <th>Email</th>
-                      {u == "divyamraj110@mail.com" ? <th>Password</th> : ""}
+                      {u == "divyamraj110@gmail.com" ? <th>Password</th> : ""}
                       <th>Action</th>
                     </tr>
                   </thead>
@@ -81,7 +76,7 @@ export default function GetUser() {
                           <th>{idx + 1}</th>
                           <td>{user.username}</td>
                           <td>{user.email}</td>
-                          {u == "divyamraj110@mail.com" ? (
+                          {u == "divyamraj110@gmail.com" ? (
                             <td>{user.password}</td>
                           ) : (
                             ""
@@ -96,6 +91,11 @@ export default function GetUser() {
           </>
           : ("")
       }
+      {users.length === 0 ? (
+        <div>
+          <h3>No users left!😶</h3>
+        </div>
+      ) : ("")}
     </>
   );
 }

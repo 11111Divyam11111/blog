@@ -9,6 +9,7 @@
     "dev": "next dev"
   },
   "dependencies": {
+    "@uidotdev/usehooks": "^2.4.1",
     "autoprefixer": "10.4.19",
     "bcrypt": "^5.1.1",
     "chalk": "^4.1.0",
