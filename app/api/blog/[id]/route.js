@@ -4,9 +4,9 @@ import mongoose from "mongoose";
 import { NextResponse } from "next/server";
 
 
-export async function GET(request,c) {
+export async function GET(request,res) {
     await mongoose.connect(connectionStr);
-    const id = c.params?.id;
+    const id = res.params?.id;
     try {
         if (!id) {
             return NextResponse.json({ error: 'Id is not present' }, { status: 404 });
@@ -21,8 +21,8 @@ export async function GET(request,c) {
     }
 }
 
-export async function DELETE(req, cont) {
-    const id = cont.params.id;
+export async function DELETE(req,res) {
+    const id = res.params.id;
     await mongoose.connect(connectionStr, { useNewUrlParser: true });
     const result = await blogSchema.deleteOne({ _id: id });
     return NextResponse.json(result);

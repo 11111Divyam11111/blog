@@ -1,12 +1,12 @@
 import React from 'react'
-import { DisLike, Like } from "@/app/blog/workFunction";
+import { LikeDislike } from "@/app/blog/workFunction";
 
 
 export default function RecentBlog() {
   return (
-      <div className="flex flex-col mt-10">
-          <div className="text-center mb-10">
-            <h1 className="text-2xl font-bold">Some Recent Blogs</h1>
+      <div className="flex flex-col">
+          <div className="text-center md:pr-16 mt-10 md:mt-0">
+            <h1 className="md:text-3xl font-bold text-right font-serif">Some Recent Blogs</h1>
           </div>
           <div className="grid md:grid-cols-1 grid-cols-1 gap-5">
             <div className="bg-white rounded-lg shadow-md p-6">
@@ -27,8 +27,7 @@ export default function RecentBlog() {
                 </p>
                 <div className="flex items-center justify-between mt-4">
                   <div className="flex items-center space-x-4">
-                    <Like />
-                    <DisLike />
+                    <LikeDislike/>
                   </div>
                 </div>
               </div>
@@ -44,8 +43,7 @@ export default function RecentBlog() {
                 </p>
                 <div className="flex items-center justify-between mt-4">
                   <div className="flex items-center space-x-4">
-                    <Like />
-                    <DisLike />
+                    <LikeDislike />
                   </div>
                 </div>
               </div>
@@ -72,8 +70,7 @@ export default function RecentBlog() {
                 </p>
                 <div className="flex items-center justify-between mt-4">
                   <div className="flex items-center space-x-4">
-                    <Like />
-                    <DisLike />
+                    <LikeDislike />
                   </div>
                 </div>
               </div>

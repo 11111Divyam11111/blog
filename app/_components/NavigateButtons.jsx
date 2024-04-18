@@ -1,5 +1,5 @@
-"use client"
-import React from 'react'
+"use client";
+import React from "react";
 import Link from "next/link";
 
 export default function NavigateButtons() {
@@ -13,28 +13,33 @@ export default function NavigateButtons() {
   let naam = getCookie("user_Long");
   let naam2 = getCookie("user_Session");
   return (
-       <div className="flex justify-center my-3 flex-row gap-10">
+    <div className="md:m-28 m-8">
+      <div>
+        <h1 className="md:text-3xl text-md  font-bold text-yellow-400 font-mono md:pb-32 pb-8">Deep dive into world of thoughts</h1>
+      </div>
+      <div className={!naam && !naam2 ? "grid grid-cols-3 md:gap-36 gap-2" : "grid grid-cols-2 md:gap-36 gap-2"}>
+        <div>
           <Link href="/blog">
-            <button className="btn btn-md btn-warning">
-              View Blogs
-            </button>
+            <button className="btn md:btn-lg btn-sm btn-info text-white">View Blogs</button>
           </Link>
+        </div>
+        <div>
           <Link href="/blog/create">
-            <button className="btn btn-md btn-warning">
+            <button className="btn md:btn-lg btn-info btn-sm text-white">
               Create Blog
             </button>
           </Link>
-          {
-            !naam && !naam2 ? 
-            <Link href="/user">
-            <button className="btn btn-md btn-warning">
-              Sign up
-            </button>
-          </Link>
-          : 
-          ""
-          }
-          
         </div>
-  )
+        {!naam && !naam2 ? (
+          <div>
+            <Link href="/user">
+              <button className="btn md:btn-lg btn-info btn-sm text-white">Sign up</button>
+            </Link>
+          </div>
+        ) : (
+          <></>
+        )}
+      </div>
+    </div>
+  );
 }

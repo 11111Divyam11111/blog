@@ -1,4 +1,4 @@
-import { Like, DisLike } from "./workFunction";
+import { LikeDislike } from "./workFunction";
 import Link from "next/link";
 import notFound from "@/public/notFound2.webp"
 import Image from "next/image";
@@ -26,22 +26,20 @@ export default async function TicketList() {
 
     return (
       <div>
-        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 h-auto md:m-5&&p-5">
+        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-4 h-auto md:m-5&&p-5">
           {blogs.map((post) => (
             <div key={post._id} className="bg-white rounded-lg shadow-md p-6">
               <div>
                 <Link href={`/blog/${post._id}`}>
                   <p className="text-xl font-bold mb-2">{post.title}</p>
-                  <p className="text-gray-700">{post.blog.slice(0, 250)}..</p>
+                  <p className="text-gray-700">{post.blog}..</p>
                 </Link>
                 <div className="flex items-center justify-between mt-4">
                   <div className="flex items-center space-x-4">
-                    <Like />
-                    <DisLike />
+                    <LikeDislike />
                   </div>
                   <p className="text-sm text-gray-500 absolute -mb-3 ml-20">
-                    Posted: {post.createdAt.slice(0, 10)} at{" "}
-                    {post.createdAt.slice(11, 16)} IST
+                    {post.createdAt}
                   </p>
                 </div>
               </div>
