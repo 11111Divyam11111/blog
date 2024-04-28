@@ -1,6 +1,6 @@
 
 import Link from "next/link.js"
-import CreateUser from "./CreateUser.jsx"
+import CreateUser from "../_components/CreateUser.jsx"
 import Footer from "../_components/Footer.jsx"
 
 

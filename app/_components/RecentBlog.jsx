@@ -1,14 +1,14 @@
 import React from 'react'
-import { LikeDislike } from "@/app/blog/workFunction";
+import { LikeDislike } from "@/app/_components/workFunction";
 
 
 export default function RecentBlog() {
   return (
-      <div className="flex flex-col">
-          <div className="text-center md:pr-16 mt-10 md:mt-0">
-            <h1 className="md:text-3xl font-bold text-right font-serif">Some Recent Blogs</h1>
+      <div className="flex flex-col p-5">
+          <div className="text-center">
+            <h1 className="md:text-3xl font-bold font-serif mb-10">Some of our most unique thoughts</h1>
           </div>
-          <div className="grid md:grid-cols-1 grid-cols-1 gap-5">
+          <div className="grid md:grid-cols-3 grid-cols-1 gap-5">
             <div className="bg-white rounded-lg shadow-md p-6">
               <div>
                 <p className="text-xl font-bold mb-2">Creator: Jose Murinho</p>
@@ -77,5 +77,5 @@ export default function RecentBlog() {
             </div>
           </div>
         </div>
-  )
+  );
 }

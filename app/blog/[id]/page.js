@@ -1,4 +1,5 @@
 import DeleteBlogs from "./DeleteBlogs";
+import SingleBlog from "./SingleBlog";
 import UpdateBlog from "./UpdateBlog";
 
 export async function generateStaticParams({ id }) {
@@ -9,7 +10,7 @@ export async function generateStaticParams({ id }) {
   );
 
   return res.map((ticket) => ({
-    _id: ticket._id.toString(),
+    id: ticket._id.toString(),
   }));
 }
 
@@ -38,6 +39,8 @@ export default async function TicketDetails({ params }) {
       <div className="flex flex-col gap-10 justify-center">
         <DeleteBlogs id={id} />
         <UpdateBlog id={id} />
+        <SingleBlog id={id}/>
+        
       </div>
     </div>
   );

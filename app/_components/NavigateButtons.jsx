@@ -13,9 +13,9 @@ export default function NavigateButtons() {
   let naam = getCookie("user_Long");
   let naam2 = getCookie("user_Session");
   return (
-    <div className="md:m-28 m-8">
+    <div className="md:m-32 md:mt-24 m-8">
       <div>
-        <h1 className="md:text-3xl text-md  font-bold text-yellow-400 font-mono md:pb-32 pb-8">Deep dive into world of thoughts</h1>
+        <h1 className="md:text-6xl text-md  font-bold text-yellow-400 font-mono md:pb-32 pb-8">Deep dive into world of thoughts</h1>
       </div>
       <div className={!naam && !naam2 ? "grid grid-cols-3 md:gap-36 gap-2" : "grid grid-cols-2 md:gap-36 gap-2"}>
         <div>

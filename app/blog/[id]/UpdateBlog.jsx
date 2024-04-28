@@ -12,8 +12,12 @@ const UpdateBlog = ({ id }) => {
     if (parts.length === 2) return parts.pop().split(";").shift();
   }
   let data = getCookie("user_Session");
-  data = JSON.parse(data);
-  const valid_id = data._id;
+  let valid_id;
+  if(data){
+    data = JSON.parse(data);
+    valid_id = data._id;
+  }
+
 
   const notify = () => {
     if(valid_id!=id){

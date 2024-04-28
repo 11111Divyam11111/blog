@@ -5,6 +5,8 @@
 *{
     margin: 0;
     padding: 0;
+    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif !important;
+    
 }
 
 .active{
@@ -13,4 +15,21 @@
 .img{
     opacity: 0.4;
     z-index: -100;
+    width: 99%;
+    height: 85vh;
+}
+
+.img2{
+    opacity: 0.6;
+    z-index: -100;
+    width: 99%;
+    height: 42.5vh;
+}
+.profile-img{
+    width: 100% !important;
+    height: 100% !important;
+}
+.fancy_radius{
+    border-radius: 50px;
+    text-align: center !important;
 }

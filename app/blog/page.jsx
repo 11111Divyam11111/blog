@@ -1,5 +1,5 @@
 import Loading from "../Loading";
-import Workouts from "./Workouts";
+import Workouts from "../_components/Workouts";
 import { Suspense } from "react";
 import Footer from "../_components/Footer";
 export default function page() {
