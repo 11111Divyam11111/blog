@@ -17,7 +17,7 @@ const blogModel = new mongoose.Schema({
         type:Number,
         default:0
     },
-    person:{type:Schema.Types.String, ref:'users'}
+    person:{type:mongoose.Schema.ObjectId, ref:'users'}
 
 },{timestamps:true})
 

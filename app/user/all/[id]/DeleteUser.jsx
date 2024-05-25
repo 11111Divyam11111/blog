@@ -1,5 +1,6 @@
 "use client"
 import { useRouter } from 'next/navigation';
+import { browser } from 'process';
 import React from 'react'
 import { MdDelete } from 'react-icons/md'
 
@@ -21,6 +22,7 @@ export default function DeleteUser({id}) {
       }  
       finally{
         router.refresh();
+        window.refresh();
       }   
     }
 

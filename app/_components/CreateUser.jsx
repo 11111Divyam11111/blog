@@ -98,7 +98,7 @@ const [user,setUser] = useState(saveUser ?? "");
               placeholder="Email"
               className="input input-bordered input-primary w-full max-w-xs"
             />{
-              check ? <span>Password should be more than 8 letters</span> : ""
+              check ? <span><br/>Password should be more than 8 letters</span> : ""
             }
           </label>
           <label>

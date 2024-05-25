@@ -7,7 +7,7 @@ const Profile = dynamic(() => import("./profileData"),{
 
 export default function page() {
   return (
-    <div className='mt-10 text-center'>
+    <div className='lg:mt-10 text-center'>
       <Profile/>
     </div>
   )

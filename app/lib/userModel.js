@@ -1,6 +1,6 @@
 
 const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
+
 
 
 const userModel = new mongoose.Schema({
@@ -21,7 +21,7 @@ const userModel = new mongoose.Schema({
         unique:true
 
     },
-    blog:[{type:Schema.Types.ObjectId , ref:"workouts"}]
+    blog:[{type:mongoose.Schema.ObjectId , ref:"workouts"}]
     // Add more fields as needed
 },{timestamps:true});
 
