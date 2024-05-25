@@ -2,7 +2,7 @@ import nodemailer from 'nodemailer';
 
 export async function POST(req,res) {
   if (req.method === 'POST' || req.method === 'post') {
-    const { name, email, phone, message } = req.body;
+    const payload = await req.json;
 
     const transporter = nodemailer.createTransport({
       service: 'gmail', // You can use other services such as 'hotmail', 'yahoo', etc.
@@ -17,10 +17,10 @@ export async function POST(req,res) {
       to: 'divyamraj278@gmail.com', // Receiver email address
       subject: `Contact form submission from ${name}`,
       text: `
-        Name: ${name}
-        Email: ${email}
-        Phone: ${phone}
-        Message: ${message}
+        Name: ${payload.name}
+        Email: ${paylad.email}
+        Phone: ${payload.phone}
+        Message: ${payload.message}
       `,
     };
 

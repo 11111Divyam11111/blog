@@ -27,8 +27,8 @@ const Contact = () => {
         emailPromise,
         {
           pending: 'Sending your message...',
-          success: 'Message Sent Successfully 😀',
-          error: 'Sorry, message not sent 😥',
+          success: 'Message Sent Successfully',
+          error: 'Sorry, message not sent',
         },
         {
           position: 'top-right',
