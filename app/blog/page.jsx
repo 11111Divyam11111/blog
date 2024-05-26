@@ -1,8 +1,7 @@
 import Loading from "../Loading";
 import Workouts from "../_components/Workouts";
 import { Suspense } from "react";
-import Footer from "../_components/Footer";
-import Search from "@/app/_components/Search";
+import Search from "../_components/Search";
 import Navbar from "../_components/Navbar";
 
 export default function page() {
