@@ -3,35 +3,32 @@ import DeleteBlogs from "./DeleteBlogs";
 import SingleBlog from "./SingleBlog";
 import UpdateBlog from "./UpdateBlog";
 
-export async function generateStaticParams({ id }) {
-  await new Promise((resolve) => setTimeout(resolve, 2000));
+export async function generateStaticParams() {
+  const res = await fetch("http://localhost:3000/api/user");
+  const users = await res.json();
 
-  const res = await fetch("http://localhost:3000/api/blog").then((res) =>
-    res.json()
-  );
-
-  return res.map((ticket) => ({
-    id: ticket._id.toString(),
+  return users.map((user) => ({
+    id: user._id.toString(),
   }));
 }
 
-async function getTicket(id) {
-  const res = await fetch(`http://localhost:3000/api/blog/${id}`);
+async function getUser(id) {
+  const res = await fetch(`http://localhost:3000/api/user/${id}`);
   if (!res.ok) {
-    throw new Error("Failed to fetch ticket");
+    throw new Error("Failed to fetch user");
   }
   const data = await res.json();
   return data;
 }
 
-export default async function TicketDetails({ params }) {
+export default async function UserDetails({ params }) {
   const { id } = params;
-  let ticket;
+  let user;
   try {
-    ticket = await getTicket(id);
+    user = await getUser(id);
   } catch (error) {
-    console.error("Error fetching ticket:", error.message);
-    return <div>Error fetching ticket</div>;
+    console.error("Error fetching user:", error.message);
+    return <div>Error fetching user</div>;
   }
 
   return (
