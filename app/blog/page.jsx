@@ -2,12 +2,15 @@ import Loading from "../Loading";
 import Workouts from "../_components/Workouts";
 import { Suspense } from "react";
 import Footer from "../_components/Footer";
+import Search from "@/app/_components/search";
+import Navbar from "../_components/Navbar";
+
 export default function page() {
   return (
+    <div> 
+    <Navbar/>
     <div className="flex flex-col text-left justify-evenly gap-5">
-      <div>
-        <h1 className="text-2xl text-center">Blogs</h1>
-      </div>
+    <Search/>
       <div>
         <Suspense fallback={<Loading />}>
           <div className="flex gap-y-10 flex-col justify-center align-center">
@@ -15,6 +18,7 @@ export default function page() {
           </div>
         </Suspense>
       </div>
+    </div>
     </div>
   );
 }

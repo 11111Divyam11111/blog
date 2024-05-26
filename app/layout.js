@@ -14,7 +14,6 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" style={{overflowY:'scroll'}}>
       <body className={inter.className}>
-      <Navbar/>
       {children}
       </body>
     </html>

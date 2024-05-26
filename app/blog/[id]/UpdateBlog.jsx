@@ -1,4 +1,5 @@
 "use client";
+
 import React, { useState } from "react";
 import { FaBook } from "react-icons/fa";
 import { ToastContainer, toast } from "react-toastify";
@@ -23,7 +24,7 @@ const UpdateBlog = ({ id }) => {
     if(valid_id!=id){
       toast.info("Coming soon!", {
         position: "bottom-center",
-        autoClose: 2000,
+        autoClose: 1000,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
@@ -34,24 +35,26 @@ const UpdateBlog = ({ id }) => {
     }  
   };
   return (
+    <>
+    
     <button onClick={notify}>
       <div className="btn btn-lg btn-warning mt-5">
         <FaBook />
         <p>Update</p>
         <ToastContainer
           position="bottom-center"
-          autoClose={2000}
+          autoClose={1000}
           hideProgressBar={false}
           newestOnTop={false}
           closeOnClick
           rtl={false}
           pauseOnFocusLoss={false}
-          draggable={false}
-          pauseOnHover
+          draggable={true}
           theme="colored"
         />
       </div>
     </button>
+    </>
   );
 };
 

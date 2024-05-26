@@ -1,3 +1,4 @@
+import Navbar from "@/app/_components/Navbar";
 import DeleteBlogs from "./DeleteBlogs";
 import SingleBlog from "./SingleBlog";
 import UpdateBlog from "./UpdateBlog";
@@ -34,14 +35,16 @@ export default async function TicketDetails({ params }) {
   }
 
   return (
+    <>
+    <Navbar/>
     <div className="flex flex-col justify-center align-middle text-center mt-20 gap-10">
       <h3>What do you want to do?</h3>
       <div className="flex flex-col gap-10 justify-center">
         <DeleteBlogs id={id} />
         <UpdateBlog id={id} />
         <SingleBlog id={id}/>
-        
       </div>
     </div>
+    </>
   );
 }

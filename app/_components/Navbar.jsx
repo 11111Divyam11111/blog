@@ -38,7 +38,7 @@ export default function Navbar() {
   }, [pathName]);
 
   return (
-    <div className="flex bg-black h-20 justify-center w-full">
+    <div className="flex h-20 justify-center w-full z-20">
       <div className="flex p-8 justify-center gap-5 md:gap-32 w-full ">
         <Link href="/" className={` ${pathName === "/" ? "active" : ""}`}>
           Home
