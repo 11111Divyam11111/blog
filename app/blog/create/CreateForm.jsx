@@ -25,7 +25,7 @@ export default function CreateForm() {
     setUserId(user_ki_id);
 
     try {
-      const res = await fetch("https://blog-iota-ruddy.vercel.app/api/blog", {
+      const res = await fetch("http://localhost:3000/api/blog", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ title, blog }),
