@@ -6,13 +6,8 @@ import DeleteUser from "@/app/user/all/[id]/DeleteUser";
 
 export default function GetUser() {
   const [users, setUsers] = useState([]); // Corrected state variable name
-  const [index, setIndex] = useState(1);
 
   const router = useRouter();
-
-  // const handleRoute = (id) => {
-  //   router.push(`/user/all/${id}`);
-  // };
 
   function getCookie(name) {
     let value = `; ${document.cookie}`;
@@ -21,7 +16,7 @@ export default function GetUser() {
   }
 
   let naam = getCookie("user_Long");
-  naam = JSON.parse(naam);
+  naam = naam ? JSON.parse(naam) : {};
   const u = naam.email;
 
   useEffect(() => {
@@ -41,10 +36,8 @@ export default function GetUser() {
         }
       }
     };
-    setIndex(index + 1);
     handleSubmit();
   }, [users]);
-
   return (
     <>
       {

@@ -15,14 +15,14 @@ export default function CreateUser() {
   const [error, setError] = useState(null);
   const [check, setPasswordCheck] = useState(false);
   const notshow = false;
-  let saveUser = "";
-useEffect(()=>{
-  saveUser = localStorage.getItem("user");
-  setUser(saveUser ??  "");
-},[]);
-const [user,setUser] = useState(saveUser ?? "");
+  const saveUserRef = useRef("");
+  const [user, setUser] = useState("");
 
-
+  useEffect(() => {
+    const saveUser = localStorage.getItem("user");
+    saveUserRef.current = saveUser ?? "";
+    setUser(saveUser ?? "");
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -47,10 +47,10 @@ const [user,setUser] = useState(saveUser ?? "");
       const data = await res.json();
 
       // local storage
-      localStorage.setItem("user", JSON.stringify(data)); 
+      localStorage.setItem("user", JSON.stringify(data));
       // storing data in local Storage
 
-      //cookies
+      // cookies
       document.cookie = `user_Long=${JSON.stringify(data)}; path=/; max-age=${60 * 60 * 24 * 300};`;
       document.cookie = `user_Session=${JSON.stringify(data)}; path=/; max-age=${60 * 60 * 24 * 14};`;
 
@@ -61,9 +61,8 @@ const [user,setUser] = useState(saveUser ?? "");
     } catch (error) {
       console.error("Error creating user:", error);
       setError("Failed to create user");
-    }
-    finally{
-
+    } finally {
+      setIsLoading(false);
     }
     router.refresh();
     router.refresh();

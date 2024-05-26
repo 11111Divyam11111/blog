@@ -13,13 +13,13 @@ export default function RecentBlog() {
               <div>
                 <p className="text-xl font-bold mb-2">Creator: Jose Murinho</p>
                 <p className="text-gray-700">
-                  I am 56 now and yesterday I was 20 and today I'm 56. Time flies,
-                  time flies, and I think one day you will regret if you don't
+                  I am 56 now and yesterday I was 20 and today I`&apos;`m 56. Time flies,
+                  time flies, and I think one day you will regret if you don`&apos;`t
                   reach what you can reach. There is a huge difference between a
                   player that keeps consistency and the player that has moments,
                   and that is what makes a difference between a top player and a
-                  player with top potential. I'm not expecting you to be the man
-                  of the match every game, I'm not expecting you to score goals
+                  player with top potential. I`&apos;`m not expecting you to be the man
+                  of the match every game, I`&apos;`m not expecting you to score goals
                   every game. I just want to tell you that I think you will
                   regret. You should demand more from you, not me demanding more
                   from you, not me, nobody, you. I think you should demand more
@@ -38,7 +38,7 @@ export default function RecentBlog() {
                 <p className="text-gray-700">
                   Charles Darwin proposed the Theory of Evolution through
                   natural selection, explaining how species evolve over time. His
-                  seminal work "On the Origin of Species" laid the foundation for
+                  seminal work `&quot;`On the Origin of Species`&quot;` laid the foundation for
                   modern evolutionary biology. Topic: Renaissance Art
                 </p>
                 <div className="flex items-center justify-between mt-4">
@@ -52,9 +52,9 @@ export default function RecentBlog() {
               <div>
                 <p className="text-xl font-bold mb-2">Creator: Scott Wu</p>
                 <p className="text-gray-700">
-                  The world's first AI software engineer, named Devin, is a
+                  The world`&apos;`s first AI software engineer, named Devin, is a
                   groundbreaking creation by Cognition Labs, introduced as a fully
-                  autonomous AI software engineer. Devin's capabilities are
+                  autonomous AI software engineer. Devin`&apos;`s capabilities are
                   revolutionary, enabling it to plan, execute complex engineering
                   tasks, recall context, learn over time, fix mistakes, and
                   actively collaborate with users. Equipped with common developer

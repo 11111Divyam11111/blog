@@ -103,7 +103,7 @@ const ProfileData = () => {
             <Link href="/user" className="text-blue-500">
               Signup
             </Link>{" "}
-            if you haven't made your account.
+            if you haven`&apos;`t made your account.
           </p>
         </div>
       )}

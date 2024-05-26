@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 
 
-const search = () => {
+export default function Search(){
   const [search,setSearch] = useState("");
 
 
@@ -20,4 +20,3 @@ const search = () => {
   );
 };
 
-export default search;
