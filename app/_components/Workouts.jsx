@@ -30,10 +30,10 @@ export default async function TicketList() {
           {blogs.map((post) => (
             <div key={post._id} className="bg-white rounded-lg shadow-md p-6 shadow-yellow-400">
               <div>
-                <Link href={`/blog/${post._id}`}>
+                {/* <Link href={`/blog/${post._id}`}> */}
                   <p className="md:text-xl font-bold mb-2">{post.title}</p>
                   <p className="text-gray-700 text-sm md:text-md">{post.blog}..</p>
-                </Link>
+                {/* </Link> */}
                 <div className="flex items-center justify-between mt-4">
                   <div className="flex items-center space-x-4">
                     <LikeDislike />
