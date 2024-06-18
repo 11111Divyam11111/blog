@@ -21,7 +21,7 @@ const ProfileData = () => {
 
   useEffect(() => {
     const fetchUser = async () => {
-      const response = await fetch("http://localhost:3000/api/user");
+      const response = await fetch(`https://blog-iota-ruddy.vercel.app/user`);
       const data = await response.json();
       setUser(data);
     };

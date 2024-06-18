@@ -54,7 +54,7 @@ const Contact = () => {
   };
 
   return (
-    <div className="contact-us w-2/5 mx-auto mt-10 p-6 bg-white rounded-lg shadow-red-500 shadow-lg mb-10" id="contact">
+    <div className="contact-us md:w-2/5 mx-auto mt-10 :p-6 bg-white rounded-lg shadow-red-500 shadow-lg mb-10" id="contact">
       <ToastContainer
         position="top-center"
         autoClose={2000}
