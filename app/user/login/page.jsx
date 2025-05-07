@@ -23,10 +23,10 @@ export default function Login() {
   }
 
   let naam = getCookie("user_Long");
-  const naam1 = JSON.parse(naam);
-  const u = naam1.username;
-  const m = naam1.email;
-  const p = naam1.password;
+// //   const naam1 = JSON.parse(naam);
+//   const u = naam1.username;
+//   const m = naam1.email;
+//   const p = naam1.password;
 
   const handleSubmit = (e) => {
     e.preventDefault();

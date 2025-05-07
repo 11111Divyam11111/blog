@@ -17,10 +17,9 @@ export async function POST(req,res) {
       to: 'divyamraj278@gmail.com', // Receiver email address
       subject: `Contact form submission from ${name}`,
       text: `
-        Name: ${payload.name}
-        Email: ${paylad.email}
-        Phone: ${payload.phone}
-        Message: ${payload.message}
+        Email: ${email}
+        Phone: ${phone}
+        Message: ${message}
       `,
     };
 

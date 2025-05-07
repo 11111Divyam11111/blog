@@ -1,5 +1,5 @@
 "use client"
-import ImageFront from "./_components/ImageFront";
+import ImageFront from "./_components/ImageFront.jsx";
 
 export default function Home() {
   return (<>
